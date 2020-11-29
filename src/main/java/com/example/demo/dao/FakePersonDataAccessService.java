@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import com.example.demo.model.Person;
@@ -18,6 +19,31 @@ public class FakePersonDataAccessService implements PersonDAO {
         // TODO Auto-generated method stub
         DB.add(new Person(id, person.getName()));
         return 1;
+    }
+
+    @Override
+    public List<Person> getPeople() {
+        return DB;
+    }
+
+    @Override
+    public int deletePerson(UUID id) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int updatePersonById(UUID id, Person person) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public Optional<Person> getPersonById(UUID id) {
+        // TODO Auto-generated method stub
+        return DB.stream()
+            .filter(person -> person.getId().equals(id))
+            .findFirst();
     }
     
 }
