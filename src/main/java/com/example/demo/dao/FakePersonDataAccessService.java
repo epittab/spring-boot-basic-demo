@@ -29,6 +29,14 @@ public class FakePersonDataAccessService implements PersonDAO {
     @Override
     public int deletePerson(UUID id) {
         // TODO Auto-generated method stub
+        
+        for (int i = 0; i < DB.size(); i++) {
+            Person p = DB.get(i);
+            if (p.getId().equals(id)) { 
+                DB.remove(p);
+                return 1;
+            }
+        }
         return 0;
     }
 

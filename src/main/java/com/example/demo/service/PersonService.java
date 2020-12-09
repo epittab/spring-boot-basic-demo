@@ -24,6 +24,10 @@ public class PersonService {
     public int addPerson(Person person){
         return personDao.insertPerson(person);
     }
+    
+    public int deletePersonById(UUID id){
+        return personDao.deletePerson(id);
+    }
 
     public List<Person> getPeople(){
         return personDao.getPeople();
